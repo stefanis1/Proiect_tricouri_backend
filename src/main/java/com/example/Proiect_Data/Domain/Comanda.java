@@ -1,17 +1,29 @@
 package com.example.Proiect_Data.Domain;
 
 
+import jakarta.persistence.*;
 
+import java.util.List;
+
+@Entity
+@Table(name = "Comanda")
 public class Comanda extends BaseEntity {
+
+    @Column(name = "data")
     private java.time.LocalDate data;
-    private int id_user;
 
+    @JoinColumn(name = "Id_user")
+    @ManyToOne
+    private User user;
 
-    Comanda(){}
+    @OneToMany(mappedBy = "comanda",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<Detalii_Comanda> detaliiComanda;
 
-    Comanda(int id_user,java.time.LocalDate data )
+    public Comanda(){}
+
+    Comanda(User user,java.time.LocalDate data )
     {
-        this.id_user=id_user;
+        this.user=user;
         this.data=data;
     }
 
@@ -23,17 +35,25 @@ public class Comanda extends BaseEntity {
         this.data = data;
     }
 
-    public int getId_user() {
-        return id_user;
+    public User getUser() {
+        return user;
     }
 
-    public void setId_user(int id_user) {
-        this.id_user = id_user;
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Detalii_Comanda> getDetaliiComanda() {
+        return detaliiComanda;
+    }
+
+    public void setDetaliiComanda(List<Detalii_Comanda> detaliiComanda) {
+        this.detaliiComanda = detaliiComanda;
     }
 
     @Override
     public String toString(){
-        return "Comanda:ID"+getId()+" ,Id_User "+id_user+" ,data:"+data;
+        return "Comanda:ID"+getId()+" ,Id_User "+user.getId()+" ,data:"+data;
     }
 
 

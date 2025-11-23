@@ -1,32 +1,46 @@
 package com.example.Proiect_Data.Domain;
 
+
+import jakarta.persistence.*;
+
+import javax.naming.Name;
+
+@Entity
 public class Detalii_Comanda extends BaseEntity {
-    private int id_comanda;
-    private int id_user;
+
+    @JoinColumn(name = " id_comanda")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Comanda comanda;
+
+    @JoinColumn(name = "id_tricou")
+    @ManyToOne
+    private Tricou tricou;
+
+    @Column(name = "cantitate")
     private int cantitate;
 
     public Detalii_Comanda(){}
 
-    public Detalii_Comanda(int id_comanda,int id_user,int cantitate){
-        this.id_comanda=id_comanda;
-        this.id_user=id_user;
+    public Detalii_Comanda(Comanda comanda,Tricou tricou,int cantitate){
+        this.comanda=comanda;
+        this.tricou=tricou;
         this.cantitate=cantitate;
     }
 
-    public int getId_comanda() {
-        return id_comanda;
+    public Long getId_comanda() {
+        return comanda.getId();
     }
 
-    public void setId_comanda(int id_comanda) {
-        this.id_comanda = id_comanda;
+    public void setId_comanda(Long id_comanda) {
+        this.comanda.setId(id_comanda) ;
     }
 
-    public int getId_user() {
-        return id_user;
+    public Long getId_Tricou() {
+        return tricou.getId();
     }
 
-    public void setId_user(int id_user) {
-        this.id_user = id_user;
+    public void setId_user(Long id_tricou) {
+        this.tricou.setId(id_tricou);
     }
 
     public int getCantitate() {
@@ -39,6 +53,6 @@ public class Detalii_Comanda extends BaseEntity {
 
     @Override
     public String toString(){
-        return "Detalii_Comanda:Id_Comanda: "+id_comanda+" ,Id_User "+id_user+" ,cantitate"+cantitate;
+        return "Detalii_Comanda:Id_Comanda: "+comanda.getId()+" ,Id_User "+tricou.getId()+" ,cantitate"+cantitate;
     }
 }

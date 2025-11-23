@@ -24,6 +24,52 @@ public class Tricou extends BaseEntity {
     @Column(name = "Pret")
     private int pret;
 
+
+    @Column(name = "sezon")
+    private int sezon;
+
+    @Column(name="is_active")
+    private boolean is_active=true;
+
+
+    public boolean isIs_active() {
+        return is_active;
+    }
+
+    public void setIs_active(boolean is_active) {
+        this.is_active = is_active;
+    }
+
+    public int getSezon() {
+        return sezon;
+    }
+
+    public void setSezon(int sezon) {
+        this.sezon = sezon;
+    }
+
+    public void setEchipaId(Long id ){
+        this.echipa.setId(id);
+    }
+    public Long getEchipaId()
+    {
+       return  this.echipa.getId();
+
+    }
+
+
+    public Tricou(){}
+
+
+    public Tricou( String name, String marime, int stock, Echipa echipa,int pret,int sezon){
+        this.name=name;
+        this.marime=marime;
+        this.stock=stock;
+        this.echipa=echipa;
+        this.pret=pret;
+        this.sezon=sezon;
+    }
+
     public int getPret() {
         return pret;
     }
@@ -31,8 +77,6 @@ public class Tricou extends BaseEntity {
     public void setPret(int pret) {
         this.pret = pret;
     }
-
-    public Tricou(){}
 
     public void setMarime(String marime) {
         this.marime = marime;
@@ -63,14 +107,6 @@ public class Tricou extends BaseEntity {
         return stock;
     }
 
-
-    public Tricou( String name, String marime, int stock, Echipa echipa,int pret){
-        this.name=name;
-        this.marime=marime;
-        this.stock=stock;
-        this.echipa=echipa;
-        this.pret=pret;
-    }
 
     public void setName(String name) {
         this.name = name;
