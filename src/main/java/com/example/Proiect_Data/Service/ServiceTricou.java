@@ -44,13 +44,13 @@ public class ServiceTricou {
 
     public Tricou updateTricou(Long id,Tricou newTricou){
         Tricou oldTricou =getByIdTricou(id);
-        if(newTricou.getEchipaId()!=null) {
+        if(newTricou.getEchipa().getId()!=null) {
 
-            Echipa newEchipa = serviceEchipa.FindById(newTricou.getEchipaId());
+            Echipa newEchipa = serviceEchipa.FindById(newTricou.getEchipa().getId());
 
             if (newEchipa != null) {
                 oldTricou.setEchipa(newEchipa);
-            }else System.out.println("Echipa cu id-ul "+newTricou.getEchipaId()+" nu exista");
+            }else System.out.println("Echipa cu id-ul "+newTricou.getEchipa().getId()+" nu exista");
 
         }else{ System.out.println("nu se modifica echipa ");}
 

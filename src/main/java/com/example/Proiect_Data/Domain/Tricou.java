@@ -29,16 +29,8 @@ public class Tricou extends BaseEntity {
     private int sezon;
 
     @Column(name="is_active")
-    private boolean is_active=true;
+    private Boolean is_active=true;
 
-
-    public boolean isIs_active() {
-        return is_active;
-    }
-
-    public void setIs_active(boolean is_active) {
-        this.is_active = is_active;
-    }
 
     public int getSezon() {
         return sezon;
@@ -48,14 +40,7 @@ public class Tricou extends BaseEntity {
         this.sezon = sezon;
     }
 
-    public void setEchipaId(Long id ){
-        this.echipa.setId(id);
-    }
-    public Long getEchipaId()
-    {
-       return  this.echipa.getId();
 
-    }
 
 
     public Tricou(){}
@@ -108,18 +93,22 @@ public class Tricou extends BaseEntity {
     }
 
 
+    public Boolean getIs_active() {
+        return is_active;
+    }
+
+    public void setIs_active(Boolean is_active) {
+        this.is_active = is_active;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
     @Override
-    public String toString()
-    {
-        return "Tricou="+"id, "+getId()
-                +name+" nume," +
-                " "+" marime"+marime+
-                ", stock"+stock
-                +echipa+", id_echipa";
+    public String toString() {
+        return "Tricou: " + name +
+                (echipa != null ? ", Echipa ID: " + echipa.getId() : ", Fără echipă");
     }
 }
 

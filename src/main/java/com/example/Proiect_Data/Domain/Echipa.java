@@ -38,4 +38,6 @@ public class Echipa extends BaseEntity {
     public void setTara(String tara){
         this.tara=tara;
     }
+
+
 }

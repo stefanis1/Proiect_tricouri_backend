@@ -3,8 +3,7 @@ package com.example.Proiect_Data.Controller;
 
 import com.example.Proiect_Data.Domain.Comanda;
 import com.example.Proiect_Data.Service.ServiceComanda;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ControllerComanda {
@@ -19,4 +18,15 @@ public class ControllerComanda {
     public Iterable<Comanda> ComandaHome (){
         return serviceComanda.getAll();
     }
+
+
+    @PostMapping(path = "/comanda")
+    public Iterable<Comanda> AddComanda(@RequestBody Comanda comanda ){
+        serviceComanda.addComanda(comanda);
+
+        return ComandaHome();
+    }
+
+    @DeleteMapping(path = "/comanda/{id}")
+    public void DeleteComanda(@PathVariable Long id){serviceComanda.Detelecomanda(id);}
 }

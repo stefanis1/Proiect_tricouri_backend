@@ -21,10 +21,18 @@ public class Comanda extends BaseEntity {
 
     public Comanda(){}
 
-    Comanda(User user,java.time.LocalDate data )
+    public Comanda(User user,java.time.LocalDate data,List<Detalii_Comanda> detaliiComanda )
     {
+        this.detaliiComanda=detaliiComanda;
         this.user=user;
         this.data=data;
+
+        if (detaliiComanda != null) {
+            for (Detalii_Comanda detaliu : detaliiComanda) {
+                detaliu.setComanda(this);
+
+            }
+        }
     }
 
     public java.time.LocalDate getData() {
@@ -53,7 +61,7 @@ public class Comanda extends BaseEntity {
 
     @Override
     public String toString(){
-        return "Comanda:ID"+getId()+" ,Id_User "+user.getId()+" ,data:"+data;
+        return "Comanda:ID"+getId()+" ,Id_User "+user+" ,data:"+data+detaliiComanda;
     }
 
 

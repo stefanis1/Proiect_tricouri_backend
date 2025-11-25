@@ -1,15 +1,16 @@
 package com.example.Proiect_Data.Domain;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnore; // <--- Import necesar
 import jakarta.persistence.*;
 
-import javax.naming.Name;
-
 @Entity
+@Table(name = "detalii_comanda")
 public class Detalii_Comanda extends BaseEntity {
 
-    @JoinColumn(name = " id_comanda")
-    @ManyToOne(fetch = FetchType.LAZY)
+
+    @JoinColumn(name = "id_comanda")
+    @ManyToOne
+    @JsonIgnore
     private Comanda comanda;
 
     @JoinColumn(name = "id_tricou")
@@ -21,27 +22,13 @@ public class Detalii_Comanda extends BaseEntity {
 
     public Detalii_Comanda(){}
 
-    public Detalii_Comanda(Comanda comanda,Tricou tricou,int cantitate){
-        this.comanda=comanda;
-        this.tricou=tricou;
-        this.cantitate=cantitate;
+    public Detalii_Comanda(Comanda comanda, Tricou tricou, int cantitate){
+        this.comanda = comanda;
+        this.tricou = tricou;
+        this.cantitate = cantitate;
     }
 
-    public Long getId_comanda() {
-        return comanda.getId();
-    }
 
-    public void setId_comanda(Long id_comanda) {
-        this.comanda.setId(id_comanda) ;
-    }
-
-    public Long getId_Tricou() {
-        return tricou.getId();
-    }
-
-    public void setId_user(Long id_tricou) {
-        this.tricou.setId(id_tricou);
-    }
 
     public int getCantitate() {
         return cantitate;
@@ -51,8 +38,27 @@ public class Detalii_Comanda extends BaseEntity {
         this.cantitate = cantitate;
     }
 
+    public Comanda getComanda() {
+        return comanda;
+    }
+
+    public void setComanda(Comanda comanda) {
+        this.comanda = comanda;
+    }
+
+    public Tricou getTricou() {
+        return tricou;
+    }
+
+    public void setTricou(Tricou tricou) {
+        this.tricou = tricou;
+    }
+
+
     @Override
     public String toString(){
-        return "Detalii_Comanda:Id_Comanda: "+comanda.getId()+" ,Id_User "+tricou.getId()+" ,cantitate"+cantitate;
+        return "Detalii_Comanda: Cantitate " + cantitate +
+                (tricou != null ? ", Tricou ID: " + tricou.getId() : "") +
+                (comanda != null ? ", Comanda ID: " + comanda.getId() : "");
     }
 }
