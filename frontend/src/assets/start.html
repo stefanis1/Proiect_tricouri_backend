@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>
+    Salut
+
+</p>
+
+<script>
+    //problema 1
+const cubulNumarului = (x) => x*x*x;
+
+    //problema 2
+
+    const SalutComplet = (nume,prenume) => `Salut,numele meu este ${nume} ${prenume}!`;
+
+
+  //  problema 3
+    const esteMajor =(varsta) => varsta > 18;
+
+
+    console.log(cubulNumarului(3));
+    console.log(SalutComplet("Ungureanu","Stefanis"));
+    console.log(esteMajor(12));
+    console.log(esteMajor(20));
+
+
+    //problema 4
+    const preturi = [10,20,30,40,150,200,500]
+    const preturiduble=2;
+
+    const preturiMari=preturi.map(pret => pret*preturiduble);
+    console.log(preturiMari);
+
+    const preturiPeste=preturi.filter(pret => pret>100);
+    console.log(preturiPeste);
+
+
+    // const user={
+    //     id:1,
+    //     nume:"Stefanis",
+    //     detalii:{
+    //         oras:"Cluj",
+    //         varsta:20
+    //     }
+    // }
+    //
+    // const {nume,detalii}=user;
+    //
+    // console.log(nume,detalii.oras);
+    //
+
+ const TricouCard = (propietati) =>{
+     const{nume,echipa,pret}= propietati
+
+     return(
+         <div>
+         <h3>
+             {nume}
+         </h3>
+             <p>
+                 {echipa}
+             </p>
+             <button>
+                 Pret:{pret}
+             </button>
+     </div>
+     )
+ }
+
+
+
+
+</script>
+
+
+</body>
+</html>
