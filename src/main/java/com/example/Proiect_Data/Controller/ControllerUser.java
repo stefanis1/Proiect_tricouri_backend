@@ -6,6 +6,7 @@ import com.example.Proiect_Data.Domain.User;
 import com.example.Proiect_Data.Service.ServiceUser;
 import org.springframework.web.bind.annotation.*;
 
+
 @RestController
 public class ControllerUser {
 

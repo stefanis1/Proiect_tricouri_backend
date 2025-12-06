@@ -16,6 +16,9 @@ public class Tricou extends BaseEntity {
     @Column(name = "Stock")
     private int stock;
 
+    @Column(name="img", length = 2048)
+    private String url;
+
 
     @ManyToOne
     @JoinColumn(name = "id_echipa")
@@ -46,13 +49,14 @@ public class Tricou extends BaseEntity {
     public Tricou(){}
 
 
-    public Tricou( String name, String marime, int stock, Echipa echipa,int pret,int sezon){
+    public Tricou( String name, String marime, int stock, Echipa echipa,int pret,int sezon,String url){
         this.name=name;
         this.marime=marime;
         this.stock=stock;
         this.echipa=echipa;
         this.pret=pret;
         this.sezon=sezon;
+        this.url=url;
     }
 
     public int getPret() {
@@ -99,6 +103,14 @@ public class Tricou extends BaseEntity {
 
     public void setIs_active(Boolean is_active) {
         this.is_active = is_active;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public void setName(String name) {
